@@ -7,7 +7,7 @@
         "php": "^7.2",
 
         "sylius/sylius": "^1.2",
-        "friendsofapi/billogram": "dev-master"
+        "friendsofapi/billogram": "dev-master#80ce3438c4f4b980aa255793725aeec3dfd059c1"
     },
     "require-dev": {
         "behat/behat": "^3.3",
