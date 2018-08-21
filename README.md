@@ -19,7 +19,7 @@
 
 ## Overview
 
-This plugin allows you to integrate Billogram payment with Sylius platform app. It includes all Sylius and Billogram payment features, including recurring payment and refunding orders.
+This plugin allows you to integrate Billogram invoice with Sylius platform app. It includes all Sylius and Billogram invoice features.
 
 The plugin was developed with inspiration from BitBagCommerce's [SyliusMolliePlugin](https://github.com/BitBagCommerce/SyliusMolliePlugin).
 
