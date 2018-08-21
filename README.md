@@ -9,7 +9,7 @@
     <a href="https://packagist.org/packages/debricked/sylius-billogram-plugin" title="Version" target="_blank">
         <img src="https://img.shields.io/packagist/v/debricked/sylius-billogram-plugin.svg" />
     </a>
-    <a href="http://travis-ci.org/debricked/sylius-billogram-plugin" title="Build status" target="_blank">
+    <a href="https://travis-ci.com/debricked/sylius-billogram-plugin" title="Build status" target="_blank">
         <img src="https://travis-ci.com/debricked/sylius-billogram-plugin.svg?branch=master" />
     </a>
     <a href="https://packagist.org/packages/debricked/sylius-billogram-plugin" title="Total Downloads" target="_blank">
