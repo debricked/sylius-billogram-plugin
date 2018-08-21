@@ -1,0 +1,2 @@
+imports:
+    - { resource: "@DebrickedSyliusBillogramPlugin/Resources/config/services.yml" }

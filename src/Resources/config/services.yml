@@ -1,0 +1,9 @@
+imports:
+    - { resource: "services/action.yml" }
+    - { resource: "services/form.yml" }
+    - { resource: "services/gateway_factory.yml" }
+    - { resource: "services/validators.yml" }
+
+services:
+    debricked_sylius_billogram_plugin.get_http_request:
+        class: Payum\Core\Request\GetHttpRequest

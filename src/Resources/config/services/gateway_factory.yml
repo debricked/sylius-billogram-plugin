@@ -1,0 +1,7 @@
+services:
+    debricked_sylius_billogram_plugin.gateway_factory.billogram:
+        class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
+        arguments:
+            -  Debricked\SyliusBillogramPlugin\BillogramGatewayFactory
+        tags:
+            - { name: payum.gateway_factory_builder, factory: billogram }

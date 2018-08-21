@@ -1,0 +1,6 @@
+services:
+    debricked_sylius_billogram_plugin.form.type.billogram_gateway_configuration:
+        class: Debricked\SyliusBillogramPlugin\Form\Type\BillogramGatewayConfigurationType
+        tags:
+            - { name: sylius.gateway_configuration_type, type: billogram, label: debricked_sylius_billogram_plugin.ui.billogram_gateway_label }
+            - { name: form.type }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ This file is part of the SyliusBillogramPlugin.
+  ~
+  ~ Copyright (c) debricked AB
+  ~
+  ~ For the full copyright and license information, please view the LICENSE
+  ~ file that was distributed with this source code.
+  -->
+
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/6.5/phpunit.xsd"
+         colors="true"
+         bootstrap="vendor/autoload.php">
+    <testsuites>
+        <testsuite name="DebrickedSyliusBillogramPlugin Test Suite">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <php>
+        <server name="KERNEL_CLASS_PATH" value="/tests/Application/AppKernel.php" />
+        <server name="IS_DOCTRINE_ORM_SUPPORTED" value="true" />
+    </php>
+</phpunit>

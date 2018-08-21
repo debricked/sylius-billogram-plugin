@@ -1,0 +1,18 @@
+debricked_sylius_billogram_plugin:
+    api_key:
+        not_blank: API key cannot be blank.
+        invalid: Invalid API key. An API key can only contain hexadecimal characters.
+        min_length: API key must be at least {{ limit }} characters long.
+    channel:
+        required_currency: The base currency of the channel must be {{ currencies }}.
+    times:
+        min_range: Times cannot be lower than {{ limit }}.
+    interval:
+        not_blank: Interval cannot be blank.
+        invalid: "Invalid interval format. Possible values: … months … weeks … days"
+    consumer_name:
+        not_blank: Consumer name cannot be blank.
+    username:
+        not_blank: Username cannot be blank.
+    api_url:
+        not_blank: API url cannot be blank.

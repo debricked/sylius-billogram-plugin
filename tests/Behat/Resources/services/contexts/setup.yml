@@ -1,0 +1,21 @@
+services:
+    debricked_sylius_billogram_plugin.behat.context.setup.billogram:
+        class: Tests\Debricked\SyliusBillogramPlugin\Behat\Context\Setup\BillogramContext
+        arguments:
+            - "@sylius.behat.page.shop.order.show"
+            - "@sylius.behat.shared_storage"
+            - "@__symfony__.sylius.repository.payment_method"
+            - "@__symfony__.sylius.fixture.example_factory.payment_method"
+            - "@__symfony__.sylius.factory.payment_method_translation"
+            - "@__symfony__.sylius.manager.payment_method"
+        tags:
+            - { name: fob.context_service }
+
+    debricked_sylius_billogram_plugin.context.setup.order:
+        class: Tests\Debricked\SyliusBillogramPlugin\Behat\Context\Setup\OrderContext
+        arguments:
+            - "@__symfony__.doctrine.orm.default_entity_manager"
+            - "@__symfony__.sm.factory"
+            - "@__symfony__.payum"
+        tags:
+            - { name: fob.context_service }

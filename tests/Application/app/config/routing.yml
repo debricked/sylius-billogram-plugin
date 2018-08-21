@@ -1,0 +1,5 @@
+sylius:
+    resource: "../../../../vendor/sylius/sylius/app/config/routing.yml"
+
+debricked_sylius_billogram_plugin:
+    resource: "@DebrickedSyliusBillogramPlugin/Resources/config/routing.yml"

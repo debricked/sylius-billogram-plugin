@@ -1,0 +1,9 @@
+imports:
+    - { resource: "services/contexts.yml" }
+    - { resource: "services/pages.yml" }
+
+services:
+    debricked_sylius_billogram_plugin.behat.billogram_api_mocker:
+        class: Tests\Debricked\SyliusBillogramPlugin\Behat\Mocker\BillogramMocker
+        arguments:
+            - "@sylius.behat.mocker"

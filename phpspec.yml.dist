@@ -1,0 +1,4 @@
+suites:
+    main:
+        namespace: Debricked\SyliusBillogramPlugin
+        psr4_prefix: Debricked\SyliusBillogramPlugin

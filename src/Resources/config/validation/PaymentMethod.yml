@@ -1,0 +1,5 @@
+Sylius\Component\Core\Model\PaymentMethod:
+    constraints:
+        - Debricked\SyliusBillogramPlugin\Validator\Constraints\Currency:
+            groups: ['sylius']
+            message: 'debricked_sylius_billogram_plugin.channel.required_currency'

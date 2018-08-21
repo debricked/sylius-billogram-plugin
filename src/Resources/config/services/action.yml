@@ -1,0 +1,29 @@
+services:
+    debricked_sylius_billogram_plugin.action.capture:
+        class: Debricked\SyliusBillogramPlugin\Action\CaptureAction
+        tags:
+            - { name: payum.action, factory: billogram, alias: payum.action.capture }
+
+    debricked_sylius_billogram_plugin.action.notify:
+        class: Debricked\SyliusBillogramPlugin\Action\NotifyAction
+        arguments:
+            - "@debricked_sylius_billogram_plugin.get_http_request"
+        tags:
+            - { name: payum.action, factory: billogram, alias: payum.action.notify }
+
+    debricked_sylius_billogram_plugin.action.status:
+        class: Debricked\SyliusBillogramPlugin\Action\StatusAction
+        tags:
+            - { name: payum.action, factory: billogram, alias: payum.action.status }
+
+    debricked_sylius_billogram_plugin.action.convert_payment:
+        class: Debricked\SyliusBillogramPlugin\Action\ConvertPaymentAction
+        arguments:
+            - "@sylius.payment_description_provider"
+        tags:
+            - { name: payum.action, factory: billogram, alias: payum.action.convert_payment }
+
+    debricked_sylius_billogram_plugin.payum_action.api.create_customer:
+        class: Debricked\SyliusBillogramPlugin\Action\Api\CreateCustomerAction
+        tags:
+            - { name: payum.action, factory: billogram, alias: payum.action.api.create_customer }

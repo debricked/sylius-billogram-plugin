@@ -1,0 +1,5 @@
+services:
+    debricked_sylius_billogram_plugin.validator.billogram:
+        class: Debricked\SyliusBillogramPlugin\Validator\Constraints\CurrencyValidator
+        tags:
+            - { name: validator.constraint_validator, alias: debricked_sylius_billogram_plugin_currency }

@@ -1,0 +1,17 @@
+services:
+    debricked_sylius_billogram_plugin.behat.context.ui.admin.managing_payment_method_billogram:
+        class: Tests\Debricked\SyliusBillogramPlugin\Behat\Context\Ui\Admin\ManagingPaymentMethodContext
+        arguments:
+            - "@debricked_sylius_billogram_plugin.page.admin.payment_method.create"
+        tags:
+            - { name: fob.context_service }
+
+    debricked_sylius_billogram_plugin.behat.context.ui.shop.checkout:
+        class: Tests\Debricked\SyliusBillogramPlugin\Behat\Context\Ui\Shop\CheckoutContext
+        arguments:
+            - "@debricked_sylius_billogram_plugin.page.shop.checkout.complete"
+            - "@sylius.behat.page.shop.order.show"
+            - "@debricked_sylius_billogram_plugin.behat.billogram_api_mocker"
+            - "@debricked_sylius_billogram_plugin.page.external.payment"
+        tags:
+            - { name: fob.context_service }

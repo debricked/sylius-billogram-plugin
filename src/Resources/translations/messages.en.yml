@@ -1,0 +1,8 @@
+debricked_sylius_billogram_plugin:
+    ui:
+        username: Username
+        api_key: API key
+        billogram_gateway_label: Billogram
+        refunded_only_locally: The payment refund was made only locally
+        consumer_name: Consumer name
+        api_url: API url
