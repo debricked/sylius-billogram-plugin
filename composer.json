@@ -1,5 +1,5 @@
 {
-    "name": "debricked/billogram-plugin",
+    "name": "debricked/sylius-billogram-plugin",
     "type": "sylius-plugin",
     "description": "Billogram payment plugin for Sylius applications.",
     "license": "MIT",
