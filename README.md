@@ -3,17 +3,17 @@
         <img src="https://billogram.com/static/images/billogram-og_@2X.png" />
     </a>
     <br />
-    <a href="https://packagist.org/packages/debricked/billogram-plugin" title="License" target="_blank">
-        <img src="https://img.shields.io/packagist/l/debricked/billogram-plugin.svg" />
+    <a href="https://packagist.org/packages/debricked/sylius-billogram-plugin" title="License" target="_blank">
+        <img src="https://img.shields.io/packagist/l/debricked/sylius-billogram-plugin.svg" />
     </a>
-    <a href="https://packagist.org/packages/debricked/billogram-plugin" title="Version" target="_blank">
-        <img src="https://img.shields.io/packagist/v/debricked/billogram-plugin.svg" />
+    <a href="https://packagist.org/packages/debricked/sylius-billogram-plugin" title="Version" target="_blank">
+        <img src="https://img.shields.io/packagist/v/debricked/sylius-billogram-plugin.svg" />
     </a>
     <a href="http://travis-ci.org/debricked/sylius-billogram-plugin" title="Build status" target="_blank">
         <img src="https://travis-ci.com/debricked/sylius-billogram-plugin.svg?branch=master" />
     </a>
-    <a href="https://packagist.org/packages/debricked/billogram-plugin" title="Total Downloads" target="_blank">
-        <img src="https://poser.pugx.org/debricked/billogram-plugin/downloads" />
+    <a href="https://packagist.org/packages/debricked/sylius-billogram-plugin" title="Total Downloads" target="_blank">
+        <img src="https://poser.pugx.org/debricked/sylius-billogram-plugin/downloads" />
     </a>
 </h1>
 
@@ -25,7 +25,7 @@ The plugin was developed with inspiration from BitBagCommerce's [SyliusMolliePlu
 
 ## Installation
 ```bash
-$ composer require debricked/billogram-plugin 
+$ composer require debricked/sylius-billogram-plugin
 ```
     
 Add plugin dependencies to your AppKernel.php file:

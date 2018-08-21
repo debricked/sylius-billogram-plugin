@@ -9,6 +9,16 @@
         "sylius/sylius": "^1.2",
         "friendsofapi/billogram": "dev-master#80ce3438c4f4b980aa255793725aeec3dfd059c1"
     },
+    "authors": [
+        {
+            "name": "debricked AB",
+            "homepage": "https://debricked.com"
+        },
+        {
+            "name": "Oscar Reimer",
+            "email": "oscar.reimer@debricked.com"
+        }
+    ],
     "require-dev": {
         "behat/behat": "^3.3",
         "behat/mink": "^1.7",
