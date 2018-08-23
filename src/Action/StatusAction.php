@@ -52,7 +52,7 @@ final class StatusAction extends BaseApiAwareAction implements ActionInterface, 
         switch ($paymentData->getState()) {
 
             case BillogramGatewayFactoryInterface::BILLOGRAM_STATE_UNATTESTED:
-                $request->markPending();
+                $request->markCaptured();
 
                 break;
             case BillogramGatewayFactoryInterface::BILLOGRAM_STATE_UNPAID:

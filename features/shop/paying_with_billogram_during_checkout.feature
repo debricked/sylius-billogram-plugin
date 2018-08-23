@@ -17,4 +17,4 @@ Feature: Paying with Billogram during checkout
         Given I added product "PHP T-Shirt" to the cart
         And I have proceeded selecting "Billogram" payment method
         When I confirm my order with Billogram payment
-        Then I should be notified that my payment is being processed
+        Then I should be notified that my payment has been completed

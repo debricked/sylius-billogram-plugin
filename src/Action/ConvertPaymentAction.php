@@ -65,6 +65,19 @@ final class ConvertPaymentAction extends BaseApiAwareAction implements ActionInt
         $billingAddress = $order->getBillingAddress();
         $shippingAddress = $order->getShippingAddress();
 
+        $fullName = null;
+        if (empty($fullName = $customer->getFullName())) {
+            if (empty($fullName = $billingAddress->getFullName())) {
+                $fullName = '';
+            }
+        }
+        $phoneNumber = null;
+        if (empty($phoneNumber = $customer->getPhoneNumber())) {
+            if (empty($phoneNumber = $billingAddress->getPhoneNumber())) {
+                $phoneNumber = '';
+            }
+        }
+
         $details = [
             'amount' =>
                 [
@@ -73,9 +86,9 @@ final class ConvertPaymentAction extends BaseApiAwareAction implements ActionInt
             'description' => $this->paymentDescriptionProvider->getPaymentDescription($payment),
             'invoice_no' => $order->getId(),
             'customerId' => $customer->getId() ?? null,
-            'fullName' => $customer->getFullName() ?? '',
+            'fullName' => $fullName,
             'email' => $customer->getEmail() ?? '',
-            'phoneNumber' => $customer->getPhoneNumber() ?? '',
+            'phoneNumber' => $phoneNumber,
             'billingAddress' =>
                 [
                     'postCode' => $billingAddress->getPostcode(),
