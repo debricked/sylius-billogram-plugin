@@ -23,6 +23,7 @@ use Payum\Core\GatewayAwareTrait;
 use Payum\Core\Request\Convert;
 use Payum\Core\Request\GetCurrency;
 use Sylius\Bundle\PayumBundle\Provider\PaymentDescriptionProviderInterface;
+use Sylius\Component\Core\Model\AdjustmentInterface;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
 
@@ -117,19 +118,56 @@ final class ConvertPaymentAction extends BaseApiAwareAction implements ActionInt
             $orderItemArray['item_no'] = $orderItem->getId();
             $orderItemArray['count'] = $orderItem->getQuantity();
             $orderItemArray['title'] = $orderItem->getProductName().' - '.$orderItem->getVariantName();
-            $orderItemArray['price'] = $orderItem->getUnitPrice() / 100;
+            $vat = 0;
             if ($orderItem->getTaxTotal() > 0) {
-                $orderItemArray['vat'] = (($orderItem->getTotal() / $orderItem->getTaxTotal()) - 1) * 100;
+                $vat = $orderItem->getTaxTotal() / ($orderItem->getTotal() - $orderItem->getTaxTotal());
             }
-            else {
-                $orderItemArray['vat'] = 0;
-            }
-            $orderItemArray['discount'] = ($orderItem->getQuantity() * ($orderItem->getUnitPrice()
-                        - $orderItem->getDiscountedUnitPrice())) / 100;
+            $orderItemArray['price'] = $this->formatPrice($orderItem->getUnitPrice() * ($vat + 1));
+            $orderItemArray['vat'] = $vat * 100;
+            $orderItemArray['discount'] = $this->formatPrice(
+                $orderItem->getAdjustmentsTotalRecursively(AdjustmentInterface::ORDER_ITEM_PROMOTION_ADJUSTMENT)
+            );
             $orderItemArray['unit'] = '-';
 
             $details['items'][] = $orderItemArray;
         }
+
+        $shippingItem = [];
+        $shippingItem['count'] = 1;
+        foreach ($order->getShipments() as $shipment) {
+            if (empty($shipmentTitle = $shipment->getMethod()->getName()) === false) {
+                if (\array_key_exists('title', $shippingItem) === true) {
+                    $shippingItem['title'] .= ' & ';
+                }
+                else {
+                    $shippingItem['title'] = '';
+                }
+                $shippingItem['title'] .= $shipmentTitle;
+            }
+            if (empty($shipmentDescription = $shipment->getMethod()->getDescription()) === false) {
+                if (\array_key_exists('description', $shippingItem) === true) {
+                    $shippingItem['description'] = ' & ';
+                }
+                else {
+                    $shippingItem['description'] = '';
+                }
+                $shippingItem['description'] .= $shipmentDescription;
+            }
+        }
+        $shippingItem['price'] = $this->formatPrice($order->getShippingTotal());
+        if ($order->getTaxTotal() > 0) {
+            $shippingItem['vat'] = $this->formatPrice(
+                $order->getAdjustmentsTotalRecursively(AdjustmentInterface::TAX_ADJUSTMENT)
+            );
+        }
+        else {
+            $shippingItem['vat'] = 0;
+        }
+        $shippingItem['discount'] = $this->formatPrice(
+            $order->getAdjustmentsTotalRecursively(AdjustmentInterface::ORDER_SHIPPING_PROMOTION_ADJUSTMENT)
+        );
+        $shippingItem['unit'] = '-';
+        $details['items'][] = $shippingItem;
 
         $request->setResult($details);
     }
@@ -143,5 +181,15 @@ final class ConvertPaymentAction extends BaseApiAwareAction implements ActionInt
             $request instanceof Convert &&
             $request->getSource() instanceof PaymentInterface &&
             $request->getTo() === 'array';
+    }
+
+    /**
+     * @param float $price
+     *
+     * @return int
+     */
+    private function formatPrice(float $price): int
+    {
+        return intval(\round($price / 100, 0));
     }
 }

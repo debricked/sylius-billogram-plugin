@@ -26,7 +26,6 @@ use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\GatewayAwareInterface;
 use Payum\Core\GatewayAwareTrait;
 use Payum\Core\Request\Capture;
-use Sylius\Bundle\PayumBundle\Request\GetStatus;
 
 final class CaptureAction extends BaseApiAwareAction implements ActionInterface, ApiAwareInterface, GatewayAwareInterface
 {
@@ -62,9 +61,14 @@ final class CaptureAction extends BaseApiAwareAction implements ActionInterface,
         $items = [];
         foreach ($details['items'] as $itemDetails) {
             $itemOfInvoice = new Item();
-            $itemOfInvoice = $itemOfInvoice->withItemNo(\strval($itemDetails['item_no']));
+            if (\array_key_exists('item_no', $itemDetails) === true) {
+                $itemOfInvoice = $itemOfInvoice->withItemNo(\strval($itemDetails['item_no']));
+            }
             $itemOfInvoice = $itemOfInvoice->withCount($itemDetails['count']);
             $itemOfInvoice = $itemOfInvoice->withTitle($itemDetails['title']);
+            if (\array_key_exists('description', $itemDetails) === true) {
+                $itemOfInvoice = $itemOfInvoice->withDescription($itemDetails['description']);
+            }
             $itemOfInvoice = $itemOfInvoice->withUnit($itemDetails['unit']);
             $itemOfInvoice = $itemOfInvoice->withPrice($itemDetails['price']);
             $itemOfInvoice = $itemOfInvoice->withVat($itemDetails['vat']);
