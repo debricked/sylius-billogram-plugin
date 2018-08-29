@@ -183,7 +183,7 @@ final class ConvertPaymentActionSpec extends ObjectBehavior
                             'item_no' => null,
                             'count' => 1,
                             'title' => 'A small shirt - White',
-                            'price' => 10,
+                            'price' => 8, // Billogram multiplies this price with the VAT
                             'vat' => 25,
                             'discount' => 0,
                             'unit' => '-',

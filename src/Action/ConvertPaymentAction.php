@@ -122,7 +122,7 @@ final class ConvertPaymentAction extends BaseApiAwareAction implements ActionInt
             if ($orderItem->getTaxTotal() > 0) {
                 $vat = $orderItem->getTaxTotal() / ($orderItem->getTotal() - $orderItem->getTaxTotal());
             }
-            $orderItemArray['price'] = $this->formatPrice($orderItem->getUnitPrice() * ($vat + 1));
+            $orderItemArray['price'] = $this->formatPrice($orderItem->getUnitPrice());
             $orderItemArray['vat'] = $vat * 100;
             $orderItemArray['discount'] = $this->formatPrice(
                 $orderItem->getAdjustmentsTotalRecursively(AdjustmentInterface::ORDER_ITEM_PROMOTION_ADJUSTMENT)
